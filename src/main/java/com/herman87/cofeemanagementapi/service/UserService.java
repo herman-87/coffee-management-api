@@ -1,9 +1,10 @@
 package com.herman87.cofeemanagementapi.service;
 
+import com.herman87.cofeemanagementapi.dto.UserDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Map;
 
 public interface UserService {
-    ResponseEntity<String> signUp(Map<String, String> requestMap);
+    String signUp(UserDTO userDTO);
 }
