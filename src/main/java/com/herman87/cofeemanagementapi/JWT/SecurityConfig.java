@@ -1,9 +1,13 @@
 package com.herman87.cofeemanagementapi.JWT;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @Configuration
-@EnableAutoConfiguration
+@EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final CustomerUserDetailsService customerUserDetailsService;
 }
