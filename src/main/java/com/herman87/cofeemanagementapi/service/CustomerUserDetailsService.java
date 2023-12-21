@@ -1,4 +1,4 @@
-package com.herman87.cofeemanagementapi.JWT;
+package com.herman87.cofeemanagementapi.service;
 
 import com.herman87.cofeemanagementapi.domain.User;
 import com.herman87.cofeemanagementapi.repository.UserRepository;

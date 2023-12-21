@@ -1,4 +1,4 @@
-package com.herman87.cofeemanagementapi.JWT;
+package com.herman87.cofeemanagementapi.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
