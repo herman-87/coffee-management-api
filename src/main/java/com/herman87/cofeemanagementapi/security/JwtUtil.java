@@ -13,12 +13,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtUtil {
-    private String secret = "herman87";
-
-    public <T> T extractClaims(String token, Function<Claims, T> claimsTResolver) {
-        final Claims claims = extractAllClaims(token);
-        return claimsTResolver.apply(claims);
-    }
+    private final String secret = "herman87";
 
     public String extractUsername(String token) {
         return extractClaims(token, Claims::getSubject);
@@ -26,6 +21,12 @@ public class JwtUtil {
 
     public Date extractExpiration(String token) {
         return extractClaims(token, Claims::getExpiration);
+    }
+
+
+    public <T> T extractClaims(String token, Function<Claims, T> claimsTResolver) {
+        final Claims claims = extractAllClaims(token);
+        return claimsTResolver.apply(claims);
     }
 
     public Claims extractAllClaims(String token) {
@@ -50,11 +51,11 @@ public class JwtUtil {
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10 ))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
                 .signWith(SignatureAlgorithm.HS256, secret).compact();
     }
 
-    private Boolean validateToken(String token, UserDetails userDetails) {
+    public Boolean validateToken(String token, UserDetails userDetails) {
         String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
